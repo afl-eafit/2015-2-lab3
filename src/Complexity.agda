@@ -26,6 +26,12 @@ suc m * n = n + m * n
 
 {-# BUILTIN NATTIMES _*_ #-}
 
+-- Lists
+data List (A : Set) : Set where
+  []  : List A
+  _∷_ : (x : A) → (xs : List A ) → List A
+
+
 -- Equality
 data _≡_ {A : Set} (x : A) : A → Set where
   refl : x ≡ x
@@ -75,3 +81,14 @@ abstract
   -- Replace equal complexities, mostly used to deal with arithmetic errors.
   cast : {n₁ n₂ : ℕ} → n₁ ≡ n₂ → ℕ-thunk n₁ → ℕ-thunk n₂
   cast _ x = x
+
+-- Run-time functions
+
+min' : ℕ → ℕ → ℕ
+min' zero _          = zero
+min' _    zero       = zero
+min' (suc n) (suc m) = suc (min n m)
+
+length' : {A : Set} → List A → ℕ
+length' []       = zero
+length' (_ ∷ xs) = 1 + length xs
