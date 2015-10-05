@@ -21,16 +21,15 @@
 
   <div style="text-align: left;">
     <p>The time complexity of an algorithm is the amount of time taken
-      by such algorithm to run as a function of its input. This is,
-      for an algorithm with a complexity of <i>2n</i> it takes with an
-      input of size <i>n</i> <i>2n</i> units of time to complete its
-      execution, this is often denoted as <i>O(2n)</i>.  Using an
-      expressive enough type system is possible to implement functions
-      with associated complexities embedded in its type, One example
-      of this is (Danielsson 2008) which implements a library
-      (<i><a href="https://github.com/afl-eafit/2015-2-lab3/blob/master/src/Complexity.agda">
-      THUNK</a></i>) to add complexity annotations to functions in
-      Agda.
+    by such algorithm to run as a function of its input. This is, for
+    an algorithm with a complexity of <i>2n</i> it takes with an input
+    of size <i>n</i>, <i>2n</i> units of time to complete its
+    execution, this is often denoted as <i>O(2n)</i>.  Using an
+    expressive enough type system is possible to implement functions
+    with associated complexities embedded in its type. One example of
+    this is (Danielsson 2008) which implements a library (<i><a
+    href="https://github.com/afl-eafit/2015-2-lab3/blob/master/src/Complexity.agda">THUNK</a></i>)
+    to add complexity annotations to functions in Agda.
     </p>
 
     <p>
@@ -47,11 +46,11 @@
   see Danielsson, 2008, Section 3.)</p>
   <ul>
     <li>Define a function <tt>sum : (a : ℕ) → (b : ℕ) → ℕ-thunk (1 +
-    a)</tt> that adds two ℕ numbers.</li>
+    a)</tt> that adds two natural numbers.</li>
     <li>Define a function <tt>max : (n : ℕ) → (m : ℕ) → ℕ-thunk (1 +
-    min' n m)</tt> that returns the greatest of 2 ℕ numbers.</li>
+    min' n m)</tt> that returns the greatest of two natural numbers.</li>
     <li>Define a function <tt>min : (n : ℕ) → (m : ℕ) → ℕ-thunk (1 +
-    min' n m)</tt> that returns the smallest of 2 ℕ numbers.</li>
+    min' n m)</tt> that returns the smallest of tow natural numbers.</li>
     <li>Define a function <tt>length : {A : Set} → (l : List A) →
     ℕ-thunk (1 + length' l)</tt> that given a list returns its
       length.</li>
@@ -141,7 +140,12 @@
     <li>The programming lab may either be solved on your own, or jointly with
     one other student taking the course.</li>
 
-    <li>You are to use the Agda 2.4.2.4.</li>
+    <li>You are to use Agda 2.4.2.4 which can be installed using the
+    following commands:<br/>
+
+    <code>$ cabal update</code><br/>
+    <code>$ cabal install Agda</code><br/>
+    </li>
 
   </ul>
 
