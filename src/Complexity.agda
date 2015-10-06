@@ -87,8 +87,21 @@ abstract
 min' : ℕ → ℕ → ℕ
 min' zero _          = zero
 min' _    zero       = zero
-min' (suc n) (suc m) = suc (min n m)
+min' (suc n) (suc m) = suc (min' n m)
 
 length' : {A : Set} → List A → ℕ
 length' []       = zero
-length' (_ ∷ xs) = 1 + length xs
+length' (_ ∷ xs) = 1 + length' xs
+
+-- Example
+
+-- ℕ successor function with time complexity of O(1)
+suc₁ :  ℕ → ℕ-thunk 1
+suc₁ n = ✓ (return ( suc n ))
+
+-- λ x → x + 5 function with time complexity O(1 + x)
+sum5 : (a : ℕ) → ℕ-thunk (1 + a)
+sum5 zero    = ✓ (return zero)  -- Base case, the cost of returning zero O(1)
+sum5 (suc n) = sum5 n >>= suc₁  -- Recursive case,
+`                               -- cost of computing sum5 n O(1 + n)
+                                -- cost of suc₁ O(1)
