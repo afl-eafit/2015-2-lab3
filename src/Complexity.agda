@@ -105,3 +105,21 @@ sum5 zero    = ✓ (return 5)  -- Base case, the cost of returning zero O(1)
 sum5 (suc n) = sum5 n >>= suc₁  -- Recursive case,
                                 -- cost of computing sum5 n O(1 + n)
                                 -- cost of suc₁ O(1)
+
+sum : (a : ℕ) → (b : ℕ) → ℕ-thunk (1 + a)
+sum zero    n = ✓ (return n)
+sum (suc m) n = sum m n >>= suc₁
+
+aux₁ : {n : ℕ} →  zero ≡ min' n zero
+aux₁ {zero}  = refl
+aux₁ {suc n} = refl
+
+max : (n : ℕ) → (m : ℕ) → ℕ-thunk (1 + min' n m)
+max zero    m       = ✓ (return m)
+max n       zero    = ✓ (cast (aux₁ {n}) (return n))
+max (suc n) (suc m) = max n m >>= suc₁
+
+min : (n : ℕ) → (m : ℕ) → ℕ-thunk (1 + min' n m)
+min zero m          =  ✓ (return zero)
+min n    zero       =  ✓ (cast (aux₁ {n}) (return n))
+min (suc n) (suc m) = min n m >>= suc₁
