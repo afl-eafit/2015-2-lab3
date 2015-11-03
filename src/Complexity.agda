@@ -101,7 +101,7 @@ suc₁ n = ✓ (return ( suc n ))
 
 -- λ x → x + 5 function with time complexity O(1 + x)
 sum5 : (a : ℕ) → ℕ-thunk (1 + a)
-sum5 zero    = ✓ (return zero)  -- Base case, the cost of returning zero O(1)
+sum5 zero    = ✓ (return 5)  -- Base case, the cost of returning zero O(1)
 sum5 (suc n) = sum5 n >>= suc₁  -- Recursive case,
                                 -- cost of computing sum5 n O(1 + n)
                                 -- cost of suc₁ O(1)
